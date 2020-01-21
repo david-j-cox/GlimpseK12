@@ -27,4 +27,4 @@ What things are needed to install run the project.
 ### Deployment
 #### Built With
 #### License. 
-This project is licensed under [GNU General Public License v3.0] (https://github.com/davidjcox333/GlimpseK12/blob/master/LICENSE "GlimpseK12 License")
+This project is licensed under GNU General Public License v3.0.
