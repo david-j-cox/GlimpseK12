@@ -1,31 +1,30 @@
 # GlimpseK12
  Maximizing student outcomes through predictive analytics. 
 
-## Introduction
+# Introduction
 Description of aim and purpose of project. 
 
-## Navigation section. 
+# Navigation section. 
 Bulleted list with links to other sections of the README doc. 
 
-## Motivation. 
+# Motivation. 
 
+# Tools and technologies used. 
 
-## Tools and technologies used. 
+## Flow of the data
 
+## Details of the workflow
 
-### Flow of the data
+## Prequisites
+What things are needed to install run the project. 
 
+### Data source
 
-### Details of the workflow
+### Data process
 
-#### Data source
+### Environment setup
 
-
-#### Data process
-
-
-#### Environment setup
-
-
-#### Deployment
-
+### Deployment
+#### Built With
+#### License. 
+This project is licensed under [GNU General Public License v3.0] (https://github.com/davidjcox333/GlimpseK12/blob/master/LICENSE "GlimpseK12 License")
