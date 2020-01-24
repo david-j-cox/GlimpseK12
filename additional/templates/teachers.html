@@ -23,17 +23,17 @@
       </header>
       <!-- Page Features -->
       <h2></h2>
-     <div class="dropdown"><center>
-      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Choose from the teachers available for that grade-level.
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{{ url_for('match')}}"><center>M. Ozuna</center></a>
-        <a class="dropdown-item" href="{{ url_for('match')}}"><center>D. Jeter</center></a>
-        <a class="dropdown-item" href="{{ url_for('match')}}"><center>L. Walker</center></a>
-        <a class="dropdown-item" href="{{ url_for('match')}}"><center>Select All</center></a>
-      </div>
-    </center>
+    <div class="dropdown">
+      <center>
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose the district the student will live in for the upcoming schoolyear.
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{ url_for('match_Ozuna')}}"><center>District A</center></a>
+          <a class="dropdown-item" href="{{ url_for('match_Jeter')}}"><center>District B</center></a>
+          <a class="dropdown-item" href="{{ url_for('match_Walker')}}"><center>District C</center></a>
+        </div>
+      </center>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

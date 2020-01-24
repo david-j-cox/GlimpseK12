@@ -26,13 +26,50 @@ def teachers():
    return render_template("teachers.html", title = 'Teachers')
 
 @app.route('/db')
-def match():
+def match_Ozuna():
     sql_query = """                                                                       
                 SELECT * FROM "glimpseTable" WHERE "GR"='6';          
                 """
     query_results = pd.read_sql_query(sql_query,con)
-    teachers = []
-    for i in range(0,1000):
-        teachers += query_results.iloc[i]['ScantronMathPostTest']
-        teachers += "<br>"
-    return teachers
+    math_scores = []
+    for i in range(0,100):
+        m_scores = query_results.iloc[i]['ScantronMathPostTest']
+        math_scores.append(m_scores)
+    read_scores = []
+    sleep(2)
+    for i in range(0,100):
+    	r_scores = query_results.iloc[i]['ScantronReadingPostTest']
+    	read_scores.append(r_scores)
+    return render_template("match.html", math_scores=math_scores, read_scores=read_scores)
+
+@app.route('/db')
+def match_Jeter():
+    sql_query = """                                                                       
+                SELECT * FROM "glimpseTable" WHERE "GR"='2';          
+                """
+    query_results = pd.read_sql_query(sql_query,con)
+    math_scores = []
+    for i in range(0,100):
+        m_scores = query_results.iloc[i]['ScantronMathPostTest']
+        math_scores.append(m_scores)
+    read_scores = []
+    for i in range(0,100):
+    	r_scores = query_results.iloc[i]['ScantronReadingPostTest']
+    	read_scores.append(r_scores)
+    return render_template("match.html", math_scores=math_scores, read_scores=read_scores)
+
+@app.route('/db')
+def match_Walker():
+    sql_query = """                                                                       
+                SELECT * FROM "glimpseTable" WHERE "GR"='8';          
+                """
+    query_results = pd.read_sql_query(sql_query,con)
+    math_scores = []
+    for i in range(0,100):
+        m_scores = query_results.iloc[i]['ScantronMathPostTest']
+        math_scores.append(m_scores)
+    read_scores = []
+    for i in range(0,100):
+    	r_scores = query_results.iloc[i]['ScantronReadingPostTest']
+    	read_scores.append(r_scores)
+    return render_template("match.html", math_scores=math_scores, read_scores=read_scores)
