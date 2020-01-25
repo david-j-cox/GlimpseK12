@@ -22,7 +22,7 @@ def index():
 @app.route('/teachers', methods=['GET', 'POST'])
 def teachers():
    user = { 'nickname': 'David' } # fake user
-   sleep(2)
+   sleep(1)
    return render_template("teachers.html", title = 'Teachers')
 
 @app.route('/db')

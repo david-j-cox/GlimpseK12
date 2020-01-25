@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Load in data
-data_raw = pd.read_csv('toy_df.csv')
+data_raw = pd.read_csv('most_obs.csv')
 data = data_raw.copy()
 
 # Setup predictor and outcome variables. 
@@ -46,14 +46,8 @@ y_pred = regressor.predict(X_test)
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+print('R^2 Math:,', regressor.score(y_test, y_pred))
+
+y_pred.score()
 
 
-
-#####################
-predictors.loc[predictors['Type'] == -1, 'Type']=13
-
-print(predictors['Type'].unique())
-print("Max:", math_outc.max(), ", Min:", math_outc.min())
-
-for i in pred_cols:
-    print(i, "Max:", predictors[i].max(), "Min:", predictors[i].min())
