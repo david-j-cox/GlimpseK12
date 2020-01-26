@@ -4,9 +4,11 @@
 import sys
 import os
 import pandas as pd
+import pandas_profiling
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
 # Set current working directory to right folder. 
 os.chdir('/Users/dcox/Dropbox/InsightFellowship/Glimpse/')
@@ -42,7 +44,7 @@ for i in data_cols:
     val = data[i].isna().sum()
     col_nan.append(val)
 
-# Plot the number of nan per feature
+#%% Plot the number of nan per feature
 height = col_nan
 bars = list(data)
 y_pos = np.arange(len(bars))
@@ -53,6 +55,7 @@ plt.xticks(y_pos, bars, rotation=90) # Rotation of the bars names
 plt.ylabel("Number of Observations with NA Out of 78213")
 plt.show() # Show graphic
 
+
 #%% Here we're going to split our data into three. 
 #    (1) Keep as many observations as possible and remove features with more than 50% of obs with nan. 
 #    (2) Keep as many observations as possible and remove observations with a threshold of nan. 
@@ -61,27 +64,32 @@ plt.show() # Show graphic
 #%% First dataset focusing on maximizimg obs. 
 # Drop features where nan was 50% or higher (i.e., create df keeping as many obs as possible. )
 # Keep continuous DVs. 
-most_obs = data.drop(['ScantronMathPreTest', 'ScantronReadingPreTest', \
+most_obs = data.drop(['Unnamed: 0', 'ScantronMathPreTest', 'ScantronReadingPreTest', \
                     'ScantronMathMidTest', 'ScantronReadingMidTest', \
                     'IXLMathNonUser', 'IXLMathPartialUser', 'IXLMathUser',\
                     'IXLReadingNon', 'IXLReadingPartial', 'IXLReadingUser',\
                     'ScantronMathPreTestBenchmarks', 'ScantronReadingPreTestBenchmarks', \
                     'ScantronMathMidTestBenchmarks', 'ScantronReadingMidTestBenchmarks', \
-                    'ScantronMathPostTestBenchmarks', 'ScantronReadingPostTestBenchmarks'], axis=1)
+                    'ScantronMathPostTestBenchmarks', 'ScantronReadingPostTestBenchmarks', 'numna'], axis=1)
 most_obs = most_obs.dropna()
-most_obcols = list(most_obs)
+most_obscols = list(most_obs)
+most_obcols
+most_obs.to_csv('most_obs.csv')
 
 # Keep binary DVs
 most_obs_binary = data.drop(['ScantronMathPreTest', 'ScantronReadingPreTest', \
                     'ScantronMathMidTest', 'ScantronReadingMidTest', \
                     'IXLMathNonUser', 'IXLMathPartialUser', 'IXLMathUser',\
                     'IXLReadingNon', 'IXLReadingPartial', 'IXLReadingUser',\
-                    'ScantronMathPreTest', 'ScantronReadingPreTest', \
-                    'ScantronMathMidTest', 'ScantronReadingMidTest', \
-                    'ScantronMathPostTest', 'ScantronReadingPostTest'], axis=1)
+                    'ScantronMathPreTestBenchmarks', 'ScantronReadingPreTestBenchmarks', \
+                    'ScantronMathMidTestBenchmarks', 'ScantronReadingMidTestBenchmarks', \
+                    'ScantronMathPostTestBenchmarks', 'ScantronReadingPostTestBenchmarks'], axis=1)
 
+most_obs_binary = most_obs_binary.dropna()
 most_obs_binary_cols = list(most_obs_binary)
+most_obs_binary.to_csv('most_obs_binary.csv')
 
+#%%
 bin_cols_nan=[]
 for i in most_obs_binary_cols:
     val = data[i].isna().sum()
@@ -170,33 +178,30 @@ most_obs_c.to_csv('most_obs.csv')
 nan_choice = []
 for i in range(0, 30):
     most_feat = data.dropna(thresh=i)
-    nan_choice.append(most_feat)
+    new_len = len(most_feat)
+    new_len = new_len/len(data)
+    nan_choice.append(new_len)
 
-nan_choice = pd.DataFrame(nan_choice)
+# PLot it. 
+plt.plot(nan_choice, marker='o', color='black')
+plt.xlabel('Threshold of Required Non-NaNs', fontsize='20')
+plt.ylabel('Proportion of Participants Available', fontsize='20')
 
-height = nan_choice
-num_miss = list(range(0, 30))
-num_miss = pd.DataFrame(num_miss)
-bars = num_miss
-y_pos = (len(bars)
+# Keep df with at 3 or fewer nans. 
+most_feats = data.dropna(thresh=26)
+most_featsCols = list(most_feats)
 
-plt.bar(y_pos, height)
-plt.xticks(y_pos, bars)
-plt.show()
+most_feats.to_csv('most_feats.csv')
+most_obs.to_csv('most_obs.csv')
+#%% Show how many nans per variable to prove above Note. 
+for i in most_featsCols:
+    val = most_feats[i].isna().sum()
+    print(i, ":", val)
 
-
-
-most_feat = data.dropna(thresh=8)
-len(most_feat)
-
-for i in most_feat:
-        print(i, )
-
-#%% Replace NaN values in 'type' with category 'missing'
-toy_df = pd.DataFrame(toy_df)
-toy_df = toy_df['Type'].fillna('Unknown', inplace=True)
-toy_df.to_csv('toy_df.csv')
-toy_df = pd.read_csv('toy_df.csv')
+# Recode nans as missing. 
+cols_to_recode = ['IXLMathNonUser', 'IXLMathPartialUser', 'IXLMathUser', 'IXLReadingNon', 'IXLReadingPartial', 'IXLReadingUser']
+for i in cols_to_recode:
+    most_feats[i] = most_feats[i].fillna('Unknown', inplace=True)
 
 
 #%% Barplot of nan per feature. 

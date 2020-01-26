@@ -29,6 +29,13 @@ for i in pred_cols:
     predictors[i] = predictors[i].astype('category')
     predictors[i] = predictors[i].cat.codes
 
+
+schools_dict = dict(enumerate(data['School'].cat.categories))
+schools_dict = pd.DataFrame(schools_dict)
+with open('schools_dict.csv', 'w') as f:
+    for key in schools_dict.keys():
+        f.write("%s, %s\n"%(key, schools_dict[key]))
+
 # Splitting the dataset into the Training set and Test set for math outcome
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(predictors, math_outc, test_size=0.20, random_state=333)
@@ -49,5 +56,6 @@ print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_p
 print('R^2 Math:,', regressor.score(y_test, y_pred))
 
 y_pred.score()
+
 
 
