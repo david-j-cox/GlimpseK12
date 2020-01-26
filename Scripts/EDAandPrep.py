@@ -4,9 +4,11 @@
 import sys
 import os
 import pandas as pd
+import pandas_profiling
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
 # Set current working directory to right folder. 
 os.chdir('/Users/dcox/Dropbox/InsightFellowship/Glimpse/')
@@ -42,7 +44,7 @@ for i in data_cols:
     val = data[i].isna().sum()
     col_nan.append(val)
 
-# Plot the number of nan per feature
+#%% Plot the number of nan per feature
 height = col_nan
 bars = list(data)
 y_pos = np.arange(len(bars))
@@ -52,6 +54,7 @@ plt.bar(y_pos, height, color='grey')
 plt.xticks(y_pos, bars, rotation=90) # Rotation of the bars names
 plt.ylabel("Number of Observations with NA Out of 78213")
 plt.show() # Show graphic
+
 
 #%% Here we're going to split our data into three. 
 #    (1) Keep as many observations as possible and remove features with more than 50% of obs with nan. 
