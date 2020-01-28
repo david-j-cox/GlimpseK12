@@ -27,7 +27,7 @@ pred_cols = list(predictors)
 
 for i in pred_cols:
     predictors[i] = predictors[i].astype('category')
-    predictors[i] = predictors[i].cat.codes
+    Absolutepredictors[i] = predictors[i].cat.codes
 
 # Splitting the dataset into the Training set and Test set for math outcome
 from sklearn.model_selection import train_test_split
