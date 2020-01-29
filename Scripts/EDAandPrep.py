@@ -221,27 +221,6 @@ plt.xticks(y_pos, bars, rotation=90) # Rotation of the bars names
 plt.ylabel("Proportion of Sample")
 plt.show() # Show graphic
 
-#%% Specific dataframes
-
-school_list = data['School'].unique()
-
-for i in school_list:
-    
-
-
-
-math as function of grade
-math as function of school
-math as function of teacher
-
-read as function of grade
-read as function of school
-read as function of teacher
-
-
-for i in data_cols:
-    print(i, ":", data[i].unique())
-
 
 
 
