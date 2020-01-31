@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link href="../static/cover.css" rel="stylesheet"> -->
+    <title>GlimpsePredictive</title>
+  </head>
+  <body>
+    <!-- Page Content -->
+    <div class="text-dark container col-9">
+      <!-- Jumbotron Header -->
+        <header class="jumbotron jumbotron-fluid my-0 p-4">
+          <center>
+        <h2 class="strong">Here are the predicted optimal teachers for <br/>student <span class="text-success">{{GlimpseId}}</span> for grade <span class="text-success">{{grade_level}}</span>.</h2><hr class="my-4">
+          </center>
+        </header>
+  <body>
+<br><br>
+    <div class="container">
+      <div class="starter-template"></div>
+<table class="table table-hover" text-align="center">
+<tr><th><center>Teacher Rank</center></th><th><center>Teacher Number</center></th><th><center>Predicted Math Score</center></th><th><center>Meet Math Proficiency?</center></th><th><center>Predicted Reading Score</center></th><th><center>Meet Reading Proficiency?</center></th></tr>
+
+{% for table_vals in table_vals %}
+
+<tr><td><center>{{ table_vals['TxRank'] }}</center></td><td><center>{{ table_vals['TNUM'] }}</center></td><td><center>{{ table_vals['mathPred']}}</center></td><td><center>{{ table_vals['mathProf'] }}</center></td><td><center>{{ table_vals['readPred'] }}</center></td><td><center>{{ table_vals['readProf'] }}</center></td></tr>
+{% endfor %}
+</table>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
