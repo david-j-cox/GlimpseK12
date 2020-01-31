@@ -2,7 +2,7 @@
  Maximizing student outcomes through predictive analytics. 
 
 # Introduction
-Description of aim and purpose of project. 
+State the purpose of the project. 
 
 # Navigation section. 
 Bulleted list with links to other sections of the README doc. 
