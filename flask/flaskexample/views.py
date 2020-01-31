@@ -14,6 +14,7 @@ con = None
 con = psycopg2.connect(database=dbname, user=user)
 
 
+# Define functions. 
 def get_stud_ID(GlimpseId):
 	stud_id = {"4038":4038, "1416":1416, "1594":1594, "1858":1858, "1735":1735, "1215":1215, "4239":4239, 
 	"1349":1349, "1165":1165, "1321":1321, "1186":1186, "1031":1031, "1173":1173, "1418":1418}
