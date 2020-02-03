@@ -29,7 +29,7 @@ def math_prof(grade):
 	return math_proficiencies[grade]
 
 def read_prof(grade):
-	reading_proficiencies = {"4":2518, "4":2678, "5":2798}
+	reading_proficiencies = {"3":2518, "4":2678, "5":2798}
 	return reading_proficiencies[grade]
 
 @app.route('/')
