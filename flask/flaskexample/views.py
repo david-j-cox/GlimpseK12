@@ -24,6 +24,13 @@ def grade_choice(grade):
 	grade_vals = {"3":3, "4":4, "5":5}
 	return grade_vals[grade]
 
+def math_prof(grade):
+	math_proficiencies = {"3":2364, "4":2488, "5":2589}
+	return math_proficiencies[grade]
+
+def read_prof(grade):
+	reading_proficiencies = {"4":2518, "4":2678, "5":2798}
+	return reading_proficiencies[grade]
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -38,6 +45,12 @@ def predictions():
 	if request.method == 'GET':
 		grade = request.args.get('grade', '')
 		grade_val = grade_choice(grade)
+	if request.method == 'GET':
+		proficiencies = request.args.get('grade', '')
+		math_prof_val = math_prof(grade)
+	if request.method == 'GET':
+		proficiencies = request.args.get('grade', '')
+		reading_prof_val = read_prof(grade)
 	sql_query =  """SELECT  "TxRank", "TNUM", math_pred_cont, read_pred_cont, math_pred_bin, read_pred_bin FROM demo_table WHERE "GR" = '%s' AND "GlimpsestudentId" = '%s' """ %(grade_val, GlimpseId)
 	query_results=pd.read_sql_query(sql_query, con)
 	table_vals =[]
@@ -45,7 +58,7 @@ def predictions():
 		table_vals.append(dict(TxRank=query_results.iloc[i]['TxRank'], TNUM=query_results.iloc[i]['TNUM'], \
         	mathPred=query_results.iloc[i]['math_pred_cont'], readPred=query_results.iloc[i]['read_pred_cont'], mathProf=query_results.iloc[i]['math_pred_bin'], \
         	readProf=query_results.iloc[i]['read_pred_bin']))
-	return render_template('predictions.html', GlimpseId=stud_id, grade_level=grade_val, table_vals=table_vals)
+	return render_template('predictions.html', GlimpseId=stud_id, grade_level=grade_val, math_prof=math_prof_val, read_prof=reading_prof_val, table_vals=table_vals)
 
 
 
