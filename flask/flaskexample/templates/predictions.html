@@ -24,11 +24,11 @@
     <div class="container">
       <div class="starter-template"></div>
 <table class="table table-hover" text-align="center">
-<tr><th><center>Teacher Rank</center></th><th><center>Teacher Number</center></th><th><center>Predicted Math Score<br/>(Cutoff = {{ math_prof }})</center></th><th><center>Meet Math Proficiency?</center></th><th><center>Predicted Reading Score<br/>(Cutoff = {{ read_prof }})</center></th><th><center>Meet Reading Proficiency?</center></th></tr>
+<tr><th><center>Teacher Rank</center></th><th><center>Teacher Number</center></th><th><center>Predicted Math Score<br/>(Cutoff = {{ math_prof }})</center></th><th><center>Will IXLMath Tool Help?</center></th><th><center>Predicted Reading Score<br/>(Cutoff = {{ read_prof }})</center></th><th><center>Will IXLRead Tool Help?</center></th></tr>
 
 {% for table_vals in table_vals %}
 
-<tr><td><center>{{ table_vals['TxRank'] }}</center></td><td><center>{{ table_vals['TNUM'] }}</center></td><td><center>{{ table_vals['mathPred']}}</center></td><td><center>{{ table_vals['mathProf'] }}</center></td><td><center>{{ table_vals['readPred'] }}</center></td><td><center>{{ table_vals['readProf'] }}</center></td></tr>
+<tr><td><center>{{ table_vals['TxRank'] }}</center></td><td><center>{{ table_vals['TNUM'] }}</center></td><td><center>{{ table_vals['mathPred']}}</center></td><td><center>{{ table_vals['readProf'] }}</center></td><td><center>{{ table_vals['readPred'] }}</center></td><td><center>{{ table_vals['mathProf'] }}</center></td></tr>
 {% endfor %}
 </table>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
