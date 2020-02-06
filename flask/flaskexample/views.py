@@ -3,12 +3,15 @@ from flaskexample import app
 import pandas as pd
 import psycopg2
 from flask import request
+from sqlalchemy import create_engine
+from sqlalchemy_utils import database_exists, create_database
 
-user = 'dcox'
-host = 'localhost'
-dbname = 'demo'
-con = None
-con = psycopg2.connect(database=dbname, user=user)
+username = 'dcox'                    
+dbname = 'demodb'
+password = 'postgres'
+db = create_engine('postgres://%s@localhost/%s'%(username,dbname))
+con=None
+con = psycopg2.connect(database=dbname, user=username, host='localhost', password=password)
 
 
 # Define functions. 
