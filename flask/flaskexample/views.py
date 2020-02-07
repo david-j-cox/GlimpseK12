@@ -14,10 +14,10 @@ con=None
 con = psycopg2.connect(database=dbname, user=username, host='localhost', password=password)
 
 
-# Define functions. 
+# Define functions
 def get_stud_ID(GlimpseId):
-	stud_id = {"84":84, "129":129, "336":336, "342":342, "345":345, "353":353, "357":357, 
-	"215":1349, "221":221, "232":232, "280":280, "642":642, "881":881, "1241":1241}
+	stud_id = {"1179":1179, "1221":1221, "1374":1374, "1660":1660, "1662":1662, "1694":1694, "1909":1909, 
+	"46":46, "760":760, "811":811, "1208":1208, "1322":1322, "1420":1420, "4380":4380}
 	return stud_id[GlimpseId]
 
 def grade_choice(grade):
@@ -32,6 +32,7 @@ def read_prof(grade):
 	reading_proficiencies = {"3":2518, "4":2678, "5":2798}
 	return reading_proficiencies[grade]
 
+# App instructions
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
@@ -51,13 +52,13 @@ def predictions():
 	if request.method == 'GET':
 		proficiencies = request.args.get('grade', '')
 		reading_prof_val = read_prof(grade)
-	sql_query =  """SELECT  "TxRank", "TNUM", math_pred_cont, read_pred_cont, math_pred_bin, read_pred_bin FROM demo_top WHERE "GR" = '%s' AND "GlimpsestudentId" = '%s' """ %(grade_val, GlimpseId)
+	sql_query =  """SELECT  "TxRank", "TNUM", math_pred_cont, read_pred_cont, "IXLMathUser", "IXLReadingUser" FROM demo_top WHERE "GR" = '%s' AND "GlimpsestudentId" = '%s' """ %(grade_val, GlimpseId)
 	query_results=pd.read_sql_query(sql_query, con)
 	table_vals =[]
 	for i in range(0,query_results.shape[0]):
 		table_vals.append(dict(TxRank=query_results.iloc[i]['TxRank'], TNUM=query_results.iloc[i]['TNUM'], \
-        	mathPred=query_results.iloc[i]['math_pred_cont'], readPred=query_results.iloc[i]['read_pred_cont'], mathProf=query_results.iloc[i]['math_pred_bin'], \
-        	readProf=query_results.iloc[i]['read_pred_bin']))
+        	mathPred=query_results.iloc[i]['math_pred_cont'], readPred=query_results.iloc[i]['read_pred_cont'], mathTool=query_results.iloc[i]['IXLMathUser'], \
+        	readTool=query_results.iloc[i]['IXLReadingUser']))
 	return render_template('predictions.html', GlimpseId=stud_id, grade_level=grade_val, math_prof=math_prof_val, read_prof=reading_prof_val, table_vals=table_vals)
 
 
