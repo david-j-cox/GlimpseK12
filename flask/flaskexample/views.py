@@ -17,7 +17,7 @@ con = psycopg2.connect(database=dbname, user=username, host='localhost', passwor
 # Define functions
 def get_stud_ID(GlimpseId):
 	stud_id = {"1179":1179, "1221":1221, "1374":1374, "1660":1660, "1662":1662, "1694":1694, "1909":1909, 
-	"46":46, "760":760, "811":811, "1208":1208, "1322":1322, "1420":1420, "4380":4380}
+	"46":46, "760":760, "811":811, "1208":1208, "1322":1322, "1420":1420, "4383":4383}
 	return stud_id[GlimpseId]
 
 def grade_choice(grade):
