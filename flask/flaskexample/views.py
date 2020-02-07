@@ -25,7 +25,7 @@ def grade_choice(grade):
 	return grade_vals[grade]
 
 def math_prof(grade):
-	math_proficiencies = {"3":2488, "4":2589, "5":2667}
+	math_proficiencies = {"3":2364, "4":2488, "5":2589}
 	return math_proficiencies[grade]
 
 def read_prof(grade):
