@@ -16,8 +16,8 @@ con = psycopg2.connect(database=dbname, user=username, host='localhost', passwor
 
 # Define functions. 
 def get_stud_ID(GlimpseId):
-	stud_id = {"4038":4038, "1416":1416, "1594":1594, "1858":1858, "1735":1735, "1215":1215, "4239":4239, 
-	"1349":1349, "1165":1165, "1321":1321, "1186":1186, "1031":1031, "1173":1173, "1418":1418}
+	stud_id = {"84":84, "129":129, "336":336, "342":342, "345":345, "353":353, "357":357, 
+	"215":1349, "221":221, "232":232, "280":280, "642":642, "881":881, "1241":1241}
 	return stud_id[GlimpseId]
 
 def grade_choice(grade):
@@ -51,7 +51,7 @@ def predictions():
 	if request.method == 'GET':
 		proficiencies = request.args.get('grade', '')
 		reading_prof_val = read_prof(grade)
-	sql_query =  """SELECT  "TxRank", "TNUM", math_pred_cont, read_pred_cont, math_pred_bin, read_pred_bin FROM demo_table WHERE "GR" = '%s' AND "GlimpsestudentId" = '%s' """ %(grade_val, GlimpseId)
+	sql_query =  """SELECT  "TxRank", "TNUM", math_pred_cont, read_pred_cont, math_pred_bin, read_pred_bin FROM demo_top WHERE "GR" = '%s' AND "GlimpsestudentId" = '%s' """ %(grade_val, GlimpseId)
 	query_results=pd.read_sql_query(sql_query, con)
 	table_vals =[]
 	for i in range(0,query_results.shape[0]):
