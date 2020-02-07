@@ -29,5 +29,3 @@ As part of product discovery, Glimpse wanted to learn how well we could predict 
 	- Predictions stored in PostgreSQL database
 	- Webapp developed using Python, HTML, and CSS
 	- Webapp deployed using Flask with AWS (www.behavioralpredictions.xyz)
-
-This project is licensed under GNU General Public License v3.0.
