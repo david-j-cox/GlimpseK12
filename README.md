@@ -12,7 +12,7 @@ As part of product discovery, Glimpse wanted to learn how well we could predict 
 - Languages: Python, PostgreSQL, HTML/CSS
 - Tools: Pandas, Scikit-learn, NumPy, Matplotlib, Seaborn, Flask, AWS
 
-## Work flow 
+## Work flow (details omitted due to NDA)
 1. Flat files obtained from company. 
 1. Pre-processed using Python language and tools Pandas, NumPy
 1. Exploratory Data Analysis using Python language and tools Pandas, NumPy, Matplotlib, and Seaborn
