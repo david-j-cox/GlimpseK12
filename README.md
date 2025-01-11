@@ -28,4 +28,4 @@ As part of product discovery, Glimpse wanted to learn how well we could predict 
 	- Used models and data to predict academic outcomes for the grade each student would enter next
 	- Predictions stored in PostgreSQL database
 	- Webapp developed using Python, HTML, and CSS
-	- Webapp deployed using Flask with AWS (www.behavioralpredictions.xyz)
+	- Webapp deployed using Flask with AWS
